@@ -1,0 +1,124 @@
+set nocompatible
+filetype plugin indent on
+syntax on
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+"Add plugins here
+Plugin 'nlknguyen/copy-cut-paste.vim'
+Plugin 'matze/vim-move'
+"Plugin 'dracula/vim', {'.vim/bundle/dracula/colors':'dracula'}
+Plugin 'morhetz/gruvbox'
+Plugin 'crusoexia/vim-monokai'
+Plugin 'ervandew/supertab'
+Plugin 'farmergreg/vim-lastplace'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'godlygeek/tabular'
+" Plugin 'psliwka/vim-smoothie'
+Plugin 'preservim/nerdtree'
+Plugin 'Vimjas/vim-python-pep8-indent'
+
+call vundle#end()
+filetype plugin indent on
+
+nnoremap <S-Up> <S-Down>
+"Now we set this to smooth scroll
+let g:smoothie_no_default_mappings = 'true'
+nmap <silent> <S-Up> <Plug>(SmoothieUpwards)
+nmap <silent> <S-Down> <Plug>(SmoothieDownwards)
+
+"We can switch between hybrid and absolute with <C-n>
+nnoremap <silent> <C-n> :set relativenumber!<cr>
+
+"For gruvbox
+colorscheme gruvbox
+set background=dark    " Setting dark mode
+set termguicolors
+
+" Ensure correct highlighting for 
+" Fortran free-form source code 
+" and turn syntax highlighting on
+let fortran_free_source=1
+let fortran_do_enddo=1
+
+"set mouse=a
+
+" Turn on line numbers and
+" row/column numbers
+" set nu
+
+" turn hybrid line numbers on
+set number relativenumber
+set nu rnu
+
+set ruler
+
+" Make vim echo commands as they
+" are being entered.
+set showcmd
+
+" Set tabstops to two spaces
+" and ensure tab characters are
+" expanded into spaces.
+set smarttab
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+" Fix backspace key
+set bs=2
+
+" Set up searching so
+" that it jumps to matches
+" as the word is being
+" entered and is case-insensitive
+set incsearch
+set ignorecase
+set smartcase
+
+" matze-move modifiers
+let g:move_key_modifier = 'C'
+let g:move_key_modifier_visualmode = 'C'
+
+" Nerdtree stuff
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+"
+" Uncomment the following lines to make
+" vim automatically create a backup copy
+" each time a file is edited.
+"
+" If you enable this feature, be sure to
+"   
+"   mkdir ~/codeBackups
+"
+" or it won't work.
+"set backupdir=~/codeBackups
+"set backup
+
+"apparently vim and terminal are clashing when
+"it comes to using the alt key, terminal can 
+"sometimes intercept the alt and do esc instead
+"The following is a workaround to map alt sequences
+"the timeout is 50ms, so  Esc and j sent within 50ms will be mapped to <A-j>, 
+"greater than 50ms will count as separate keys. 
+"That should be enough time to distinguish between 
+"Meta encoding and hitting two keys. 
+
+"let c='a'
+"while c <= 'z'
+"  exec "set <A-".c.">=\e".c
+"  exec "imap \e".c." <A-".c.">"
+"  let c = nr2char(1+char2nr(c))
+"endw
+"
+"set ttimeout ttimeoutlen=50
+"
+"inoremap <Esc> <Esc><Esc>
+"
+
