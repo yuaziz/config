@@ -11,27 +11,39 @@ Plugin 'matze/vim-move'
 "Plugin 'dracula/vim', {'.vim/bundle/dracula/colors':'dracula'}
 Plugin 'morhetz/gruvbox'
 Plugin 'crusoexia/vim-monokai'
-Plugin 'ervandew/supertab'
 Plugin 'farmergreg/vim-lastplace'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
-" Plugin 'psliwka/vim-smoothie'
+Plugin 'itchyny/lightline.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'pseewald/vim-anyfold'
 
 call vundle#end()
 filetype plugin indent on
 
-nnoremap <S-Up> <S-Down>
-"Now we set this to smooth scroll
-let g:smoothie_no_default_mappings = 'true'
-nmap <silent> <S-Up> <Plug>(SmoothieUpwards)
-nmap <silent> <S-Down> <Plug>(SmoothieDownwards)
+let mapleader =" "
 
-"We can switch between hybrid and absolute with <C-n>
-nnoremap <silent> <C-n> :set relativenumber!<cr>
+nnoremap <PageUp> 2<C-y>
+nnoremap <PageDown> 2<C-e>
+
+"Toggle line numbers
+nnoremap <silent> <leader>lc : set nornu nonu nu<CR>
+nnoremap <silent> <leader>lo : set nu rnu <CR>
+
+"fzf keymaps and Config
+nnoremap <silent> <C-f>      : Files<CR>
+nnoremap <silent> <leader>f  : Rg<CR>
+nnoremap <silent> <leader>/  : BLines<CR>
+nnoremap <silent> <leader>'  : Marks<CR>
+nnoremap <silent> <leader>h  : History:<CR>
+nnoremap <silent> <leader>h/ : History/<CR>
+nnoremap <silent> <leader>.  : Rg <C-R><C-W><CR>
+
 
 "For gruvbox
 colorscheme gruvbox
@@ -45,6 +57,11 @@ let fortran_free_source=1
 let fortran_do_enddo=1
 
 "set mouse=a
+
+"set statusline
+set laststatus=2
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
 
 " Turn on line numbers and
 " row/column numbers
@@ -88,6 +105,7 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
 "
 " Uncomment the following lines to make
 " vim automatically create a backup copy
